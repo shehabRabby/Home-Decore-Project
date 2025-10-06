@@ -12,10 +12,12 @@ export const router = createBrowserRouter([
     path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement:<p>Loading...</p>,
     children: [
       {
         index: true,
         element: <Home></Home>,
+        loader: () => fetch("./furnitureData.json"),
       },
       {
         path: "/products",
@@ -28,7 +30,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <ErrorPage></ErrorPage>,
   },
 ]);

@@ -54,9 +54,9 @@ const Navbar = () => {
       {/* Brand Name */}
       <a className="btn btn-ghost normal-case text-2xl font-bold text-purple-700 hover:text-pink-600 transition">
         Room
-        <Link to="/" className="text-pink-500 ml-1">
+        <button  className="text-pink-500 ml-1">
           Décor
-        </Link>
+        </button>
       </a>
     </div>
 
