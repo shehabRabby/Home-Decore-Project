@@ -6,18 +6,18 @@ import MainLayout from "../LayOuts/MainLayout";
 
 import ErrorPage from "../Pages/ErrorPage";
 import WishList from "../Pages/WishList";
+import ProductDetails from "../Pages/ProductDetails";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     errorElement: <ErrorPage></ErrorPage>,
-    hydrateFallbackElement:<p>Loading...</p>,
+    hydrateFallbackElement: <p>Loading...</p>,
     children: [
       {
         index: true,
         element: <Home></Home>,
-        loader: () => fetch("./furnitureData.json"),
       },
       {
         path: "/products",
@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: "/wishlist",
         element: <WishList></WishList>,
+      },
+      {
+        path: "/productDetails/:id",
+        element: <ProductDetails></ProductDetails>,
       },
     ],
   },

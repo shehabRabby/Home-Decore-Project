@@ -1,12 +1,14 @@
 import React from "react";
+import { Link } from "react-router";
 
 const ProductCard = ({product}) => {
-    const { name, price, category, stock, image } = product;
+    const { id,name, price, category, stock, image } = product;
 
 
   return (
     <div>
       <div className="bg-white/70 backdrop-blur-md rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-600 hover:-translate-y-1 border border-white/40">
+        
         {/* Product Image */}
         <div className="relative">
           <img src={image} alt={name} className="w-full h-64 object-cover" />
@@ -22,7 +24,7 @@ const ProductCard = ({product}) => {
           <p className="text-sm text-purple-600 font-medium">{category}</p>
           <div className="flex items-center justify-between mt-2">
             <span className="text-xl font-bold text-pink-500">${price}</span>
-            <button className="btn btn-sm bg-gradient-to-r from-pink-400 to-purple-500 text-white border-none hover:scale-105 transition-transform">View Details</button>
+            <Link to={`/productDetails/${id}`} className="btn btn-sm bg-gradient-to-r from-pink-400 to-purple-500 text-white border-none hover:scale-105 transition-transform">View Details</Link>
           </div>
         </div>
       </div>
