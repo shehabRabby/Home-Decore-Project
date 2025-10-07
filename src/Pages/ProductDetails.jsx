@@ -33,7 +33,7 @@ const ProductDetails = () => {
         }
 
         localStorage.setItem("wishList",JSON.stringify(updatedList));
-        alert("Added to wishlist!")
+        alert("Item Added")
     }
 
 

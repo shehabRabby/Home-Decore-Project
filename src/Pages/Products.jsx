@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import heroImg from "../assets/heros2.png";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Products = () => {
   const [search,setSearch] = useState('');
-  const { products } = useProducts();
+  const { products,loading } = useProducts();
 
   // search Product 
   const term = search.trim().toLowerCase();
@@ -45,11 +46,12 @@ const Products = () => {
 
 
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
-        {searchProducts.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
-      </div>
+      {
+        loading ? <LoadingSpinner count='16'></LoadingSpinner> :
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
+            {searchProducts.map((product) => (<ProductCard key={product.id} product={product}></ProductCard>))}
+         </div>
+      }
 
       
     </div>

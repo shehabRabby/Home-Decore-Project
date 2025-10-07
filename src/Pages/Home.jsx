@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import ProductCard from "../components/ProductCard";
 import useProducts from "../hooks/useProducts";
 import heroImg from "../assets/hero.jpg";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const Home = () => {
   const { products, loading, error } = useProducts();
@@ -10,6 +11,7 @@ const Home = () => {
   const featureProducts = products.slice(0, 7);
   return (
     <div className="container mx-auto my-10">
+      
 
        <div className="max-w-[1250px] mx-auto mt-6 sm:mt-8 relative group">
           <div className="overflow-hidden rounded-2xl shadow-lg transition-all duration-500 group-hover:shadow-2xl group-hover:scale-[1.02]">
@@ -32,11 +34,13 @@ const Home = () => {
           View All →</Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
-        {featureProducts.map((product) => (
-          <ProductCard key={product.id} product={product}></ProductCard>
-        ))}
-      </div>
+       {
+         loading? <LoadingSpinner></LoadingSpinner> : 
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">
+            {featureProducts.map((product) => (<ProductCard key={product.id} product={product}></ProductCard>))}
+         </div>
+       }
+
     </div>
   );
 };
